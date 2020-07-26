@@ -36,6 +36,13 @@ class _ImageViewState extends State<ImageView> {
               child: Image.network(
                 widget.imgUrl,
                 fit: BoxFit.cover,
+                loadingBuilder: (context, child, progress) {
+                  return progress == null
+                      ? child
+                      : LinearProgressIndicator(
+                          backgroundColor: Colors.blueGrey[800],
+                        );
+                },
               ),
             ),
           ),
