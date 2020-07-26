@@ -64,7 +64,7 @@ class _ImageViewState extends State<ImageView> {
                         border:
                             Border.all(color: Colors.lightGreen[200], width: 1),
                         borderRadius: BorderRadius.circular(26)),
-                    width: MediaQuery.of(context).size.width / 4,
+                    width: MediaQuery.of(context).size.width / 3,
                     padding: EdgeInsets.symmetric(horizontal: 14, vertical: 14),
                     child: Column(
                       children: [
@@ -72,8 +72,7 @@ class _ImageViewState extends State<ImageView> {
                           "Save Image",
                           style: TextStyle(
                               color: Colors.lightGreen[100],
-                              fontWeight: FontWeight.bold,
-                              fontSize: 14),
+                              fontWeight: FontWeight.bold),
                         ),
                       ],
                     ),
@@ -93,7 +92,7 @@ class _ImageViewState extends State<ImageView> {
                         border:
                             Border.all(color: Colors.lightGreen[200], width: 1),
                         borderRadius: BorderRadius.circular(26)),
-                    width: MediaQuery.of(context).size.width / 3,
+                    width: MediaQuery.of(context).size.width / 2.5,
                     padding: EdgeInsets.symmetric(horizontal: 14, vertical: 14),
                     child: Column(
                       children: [
@@ -101,8 +100,7 @@ class _ImageViewState extends State<ImageView> {
                           "Set as Wallpaper",
                           style: TextStyle(
                               color: Colors.lightGreen[100],
-                              fontWeight: FontWeight.bold,
-                              fontSize: 14),
+                              fontWeight: FontWeight.bold),
                         ),
                       ],
                     ),
@@ -153,10 +151,11 @@ class _ImageViewState extends State<ImageView> {
       builder: (context) {
         return Dialog(
           backgroundColor: Colors.black54,
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(26)),
           child: Container(
             decoration: BoxDecoration(
-                color: Colors.black54,
-                border: Border.all(color: Colors.lightGreen[200], width: 2),
+                border: Border.all(color: Colors.lightGreen[200], width: 1),
                 borderRadius: BorderRadius.circular(26)),
             child: Column(
               mainAxisSize: MainAxisSize.min,
@@ -178,7 +177,10 @@ class _ImageViewState extends State<ImageView> {
                 ListTile(
                   title: Text(
                     'Home Screen',
-                    style: TextStyle(color: Colors.lightGreen[50]),
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      color: Colors.lightGreen[50],
+                    ),
                   ),
                   leading: Icon(
                     Icons.home,
@@ -192,7 +194,9 @@ class _ImageViewState extends State<ImageView> {
                 ListTile(
                   title: Text(
                     'Lock Screen',
-                    style: TextStyle(color: Colors.lightGreen[50]),
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: Colors.lightGreen[50]),
                   ),
                   leading: Icon(
                     Icons.lock,
