@@ -23,15 +23,18 @@ class WallpaperModel {
 }
 
 class SrcModel {
+  String original;
   String portrait;
   String large;
   String landscape;
   String medium;
 
-  SrcModel({this.portrait, this.landscape, this.large, this.medium});
+  SrcModel(
+      {this.original, this.portrait, this.landscape, this.large, this.medium});
 
   factory SrcModel.fromMap(Map<String, dynamic> jsonData) {
     return SrcModel(
+        original: jsonData["original"],
         portrait: jsonData["portrait"],
         large: jsonData["large"],
         landscape: jsonData["landscape"],
