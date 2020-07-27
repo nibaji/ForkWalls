@@ -2,6 +2,7 @@ import 'dart:typed_data';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
+import 'package:flutter/widgets.dart';
 import 'package:image_gallery_saver/image_gallery_saver.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:wallpaper/wallpaper.dart';
@@ -39,8 +40,12 @@ class _ImageViewState extends State<ImageView> {
                 loadingBuilder: (context, child, progress) {
                   return progress == null
                       ? child
-                      : LinearProgressIndicator(
-                          backgroundColor: Colors.blueGrey[800],
+                      : Container(
+                          alignment: Alignment.center,
+                          padding: EdgeInsets.symmetric(horizontal: 108),
+                          child: LinearProgressIndicator(
+                            backgroundColor: Colors.blueGrey[800],
+                          ),
                         );
                 },
               ),
