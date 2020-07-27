@@ -60,8 +60,12 @@ Widget wallPapersList(List<WallpaperModel> wallpapers, context) {
                       loadingBuilder: (context, child, progress) {
                         return progress == null
                             ? child
-                            : LinearProgressIndicator(
-                                backgroundColor: Colors.blueGrey[800],
+                            : Container(
+                                alignment: Alignment.center,
+                                padding: EdgeInsets.symmetric(horizontal: 18),
+                                child: LinearProgressIndicator(
+                                  backgroundColor: Colors.blueGrey[800],
+                                ),
                               );
                       },
                     )),
