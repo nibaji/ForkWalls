@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:forkwalls/model/wallpaper_model.dart';
 import 'package:forkwalls/views/image.dart';
 
@@ -53,22 +54,18 @@ Widget wallPapersList(List<WallpaperModel> wallpapers, context) {
               tag: wallpaper.src.original + adjRes,
               child: Container(
                 child: ClipRRect(
-                    borderRadius: BorderRadius.circular(26),
-                    child: Image.network(
-                      wallpaper.src.original + smallRes,
-                      fit: BoxFit.cover,
-                      loadingBuilder: (context, child, progress) {
-                        return progress == null
-                            ? child
-                            : Container(
-                                alignment: Alignment.center,
-                                padding: EdgeInsets.symmetric(horizontal: 18),
-                                child: LinearProgressIndicator(
-                                  backgroundColor: Colors.blueGrey[800],
-                                ),
-                              );
-                      },
-                    )),
+                  borderRadius: BorderRadius.circular(26),
+                  child: CachedNetworkImage(
+                    imageUrl: wallpaper.src.original + smallRes,
+                    placeholder: (context, url) =>
+                        Center(child: CircularProgressIndicator()),
+                    errorWidget: (context, url, error) =>
+                        const Icon(Icons.error_outline),
+                    fadeOutDuration: const Duration(seconds: 1),
+                    fadeInDuration: const Duration(seconds: 1),
+                    fit: BoxFit.cover,
+                  ),
+                ),
               ),
             ),
           ),

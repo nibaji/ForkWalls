@@ -7,6 +7,7 @@ import 'package:image_gallery_saver/image_gallery_saver.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:wallpaper/wallpaper.dart';
 import 'package:flutter/foundation.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'dart:async';
 import 'package:fluttertoast/fluttertoast.dart';
 
@@ -35,20 +36,15 @@ class _ImageViewState extends State<ImageView> {
             child: Container(
               height: MediaQuery.of(context).size.height,
               width: MediaQuery.of(context).size.width,
-              child: Image.network(
-                widget.imgUrl,
+              child: CachedNetworkImage(
+                imageUrl: widget.imgUrl,
+                placeholder: (context, url) =>
+                    Center(child: CircularProgressIndicator()),
+                errorWidget: (context, url, error) =>
+                    const Icon(Icons.error_outline),
+                fadeOutDuration: const Duration(seconds: 1),
+                fadeInDuration: const Duration(seconds: 1),
                 fit: BoxFit.cover,
-                loadingBuilder: (context, child, progress) {
-                  return progress == null
-                      ? child
-                      : Container(
-                          alignment: Alignment.center,
-                          padding: EdgeInsets.symmetric(horizontal: 108),
-                          child: LinearProgressIndicator(
-                            backgroundColor: Colors.blueGrey[800],
-                          ),
-                        );
-                },
               ),
             ),
           ),
