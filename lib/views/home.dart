@@ -62,8 +62,17 @@ class _HomeState extends State<Home> {
                     Expanded(
                         child: TextField(
                       controller: searchController,
+                      textInputAction: TextInputAction.search,
                       decoration: InputDecoration(
                           hintText: "search walls", border: InputBorder.none),
+                      onSubmitted: (search) {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => Search(
+                                      searchQuery: searchController.text,
+                                    )));
+                      },
                     )),
                     GestureDetector(
                         onTap: () {

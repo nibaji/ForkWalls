@@ -63,8 +63,12 @@ class _SearchState extends State<Search> {
                     Expanded(
                         child: TextField(
                       controller: searchController,
+                      textInputAction: TextInputAction.search,
                       decoration: InputDecoration(
                           hintText: "search walls", border: InputBorder.none),
+                      onSubmitted: (search) {
+                        getSearchWalls(searchController.text);
+                      },
                     )),
                     GestureDetector(
                         onTap: () {
