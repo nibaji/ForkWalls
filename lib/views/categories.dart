@@ -18,7 +18,7 @@ class _CategoryState extends State<Category> {
 
   getSearchWalls(String query) async {
     var response = await http.get(
-        "https://api.pexels.com/v1/search?query=$query&per_page=50",
+        "https://api.pexels.com/v1/search?query=$query&per_page=80",
         headers: {"Authorization": APIKey});
 
     Map<String, dynamic> jsonData = jsonDecode(response.body);
