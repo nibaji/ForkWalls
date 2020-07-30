@@ -24,8 +24,10 @@ Widget TheAppName() {
 }
 
 Widget wallPapersList(List<WallpaperModel> wallpapers, context) {
-  double screenWidth = MediaQuery.of(context).size.width * 2.7;
-  double screenHeight = MediaQuery.of(context).size.height * 2.4;
+  double screenWidth = MediaQuery.of(context).size.width *
+      MediaQuery.of(context).devicePixelRatio;
+  double screenHeight = MediaQuery.of(context).size.height *
+      MediaQuery.of(context).devicePixelRatio;
   String adjRes =
       "?auto=compress&cs=tinysrgb&fit=crop&h=$screenHeight&w=$screenWidth";
   String smallRes = "?auto=compress&cs=tinysrgb&fit=crop&h=585&w=270";
