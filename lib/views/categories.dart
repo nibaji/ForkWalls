@@ -1,9 +1,11 @@
 import 'dart:convert';
+import 'package:flutter/gestures.dart';
 import 'package:forkwalls/widgets/widget.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'package:forkwalls/data/data.dart';
 import 'package:forkwalls/model/wallpaper_model.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class Category extends StatefulWidget {
   final String categoryName;
@@ -59,6 +61,33 @@ class _CategoryState extends State<Category> {
               ),
               SizedBox(
                 height: 14,
+              ),
+              SizedBox(
+                height: 14,
+              ),
+              Container(
+                height: 18,
+                child: RichText(
+                  text: TextSpan(
+                    style: TextStyle(
+                      fontWeight: FontWeight.w800,
+                    ),
+                    children: <TextSpan>[
+                      TextSpan(
+                          text: 'Powered by ',
+                          style: TextStyle(color: Colors.lightGreen[200])),
+                      TextSpan(
+                          text: 'PEXELS',
+                          recognizer: TapGestureRecognizer()
+                            ..onTap = () async {
+                              await launch(
+                                ("https://pexels.com"),
+                              );
+                            },
+                          style: TextStyle(color: Colors.cyan[500])),
+                    ],
+                  ),
+                ),
               ),
               wallPapersList(wallpapers, context)
             ],
