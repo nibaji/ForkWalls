@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:forkwalls/model/categories_model.dart';
@@ -137,9 +138,13 @@ class CategoriesTile extends StatelessWidget {
           children: [
             ClipRRect(
               borderRadius: BorderRadius.circular(26),
-              child: Image.network(
-                imgUrl,
-                height: 80,
+              child: CachedNetworkImage(
+                imageUrl: imgUrl,
+                errorWidget: (context, url, error) =>
+                    const Icon(Icons.error_outline),
+                fadeOutDuration: const Duration(seconds: 1),
+                fadeInDuration: const Duration(seconds: 1),
+                height: 85,
                 width: 100,
                 fit: BoxFit.cover,
               ),
