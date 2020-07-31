@@ -47,6 +47,7 @@ class _SearchState extends State<Search> {
         //title: TheAppName(),
         title: Text("Search"),
         centerTitle: true,
+        elevation: 0.0,
       ),
       body: SingleChildScrollView(
         child: Container(

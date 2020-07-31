@@ -44,6 +44,7 @@ class _CategoryState extends State<Category> {
         //title: TheAppName(),
         title: Text(widget.categoryName),
         centerTitle: true,
+        elevation: 0.0,
       ),
       body: SingleChildScrollView(
         child: Container(

@@ -46,6 +46,7 @@ class _HomeState extends State<Home> {
       backgroundColor: Colors.blueGrey[900],
       appBar: AppBar(
         title: TheAppName(),
+        elevation: 0.0,
       ),
       body: SingleChildScrollView(
         child: Container(
