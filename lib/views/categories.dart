@@ -62,9 +62,6 @@ class _CategoryState extends State<Category> {
               SizedBox(
                 height: 14,
               ),
-              SizedBox(
-                height: 14,
-              ),
               Container(
                 height: 18,
                 child: RichText(
@@ -89,7 +86,29 @@ class _CategoryState extends State<Category> {
                   ),
                 ),
               ),
-              wallPapersList(wallpapers, context)
+              SizedBox(
+                height: 14,
+              ),
+              Container(
+                child: GridView.count(
+                  padding: EdgeInsets.symmetric(horizontal: 9),
+                  shrinkWrap: true,
+                  physics: ClampingScrollPhysics(),
+                  crossAxisCount: 2,
+                  childAspectRatio: 0.5,
+                  mainAxisSpacing: 10,
+                  crossAxisSpacing: 10,
+                  scrollDirection: Axis.vertical,
+                  children: List.generate(
+                    wallpapers.length,
+                    (index) {
+                      return WallsTile(
+                        imgUrl: wallpapers[index].src.original,
+                      );
+                    },
+                  ),
+                ),
+              ),
             ],
           ),
         ),

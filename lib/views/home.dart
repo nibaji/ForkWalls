@@ -138,7 +138,26 @@ class _HomeState extends State<Home> {
               SizedBox(
                 height: 14,
               ),
-              wallPapersList(wallpapers, context)
+              Container(
+                child: GridView.count(
+                  padding: EdgeInsets.symmetric(horizontal: 9),
+                  shrinkWrap: true,
+                  physics: ClampingScrollPhysics(),
+                  crossAxisCount: 2,
+                  childAspectRatio: 0.5,
+                  mainAxisSpacing: 10,
+                  crossAxisSpacing: 10,
+                  scrollDirection: Axis.vertical,
+                  children: List.generate(
+                    wallpapers.length,
+                    (index) {
+                      return WallsTile(
+                        imgUrl: wallpapers[index].src.original,
+                      );
+                    },
+                  ),
+                ),
+              ),
             ],
           ),
         ),
