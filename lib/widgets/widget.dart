@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:forkwalls/model/wallpaper_model.dart';
+import 'package:forkwalls/views/categories.dart';
 import 'package:forkwalls/views/image.dart';
 
 Widget TheAppName() {
@@ -21,6 +22,57 @@ Widget TheAppName() {
       ),
     ),
   );
+}
+
+class CategoriesTile extends StatelessWidget {
+  final String imgUrl, imgtitle;
+  CategoriesTile({@required this.imgUrl, this.imgtitle});
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () {
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => Category(
+                      categoryName: imgtitle,
+                    )));
+      },
+      child: Container(
+        margin: EdgeInsets.symmetric(horizontal: 5),
+        child: Stack(
+          children: [
+            ClipRRect(
+              borderRadius: BorderRadius.circular(26),
+              child: CachedNetworkImage(
+                imageUrl: imgUrl,
+                errorWidget: (context, url, error) =>
+                    const Icon(Icons.error_outline),
+                fadeOutDuration: const Duration(seconds: 1),
+                fadeInDuration: const Duration(seconds: 1),
+                height: 85,
+                width: 100,
+                fit: BoxFit.cover,
+              ),
+            ),
+            Container(
+              decoration: BoxDecoration(
+                  color: Colors.black12,
+                  borderRadius: BorderRadius.circular(26)),
+              height: 80,
+              width: 100,
+              alignment: Alignment.center,
+              child: Text(
+                imgtitle,
+                style:
+                    TextStyle(color: Colors.white, fontWeight: FontWeight.w500),
+              ),
+            )
+          ],
+        ),
+      ),
+    );
+  }
 }
 
 class WallsTile extends StatelessWidget {
