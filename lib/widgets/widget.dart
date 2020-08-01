@@ -85,9 +85,12 @@ class WallsTile extends StatelessWidget {
         MediaQuery.of(context).devicePixelRatio;
     double screenHeight = MediaQuery.of(context).size.height *
         MediaQuery.of(context).devicePixelRatio;
+    double smallWidth = MediaQuery.of(context).size.width * 0.5;
+    double smallHeight = MediaQuery.of(context).size.height * 0.5;
     String adjRes =
         "?auto=compress&cs=tinysrgb&fit=crop&h=$screenHeight&w=$screenWidth";
-    String smallRes = "?auto=compress&cs=tinysrgb&fit=crop&h=585&w=270";
+    String smallRes =
+        "?auto=compress&cs=tinysrgb&fit=crop&h=$smallHeight&w=$smallWidth";
 
     return GestureDetector(
       onTap: () {
