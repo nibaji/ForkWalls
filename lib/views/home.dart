@@ -22,7 +22,7 @@ class _HomeState extends State<Home> {
 
   getTrendingWalls() async {
     var response = await http.get(
-        "https://api.pexels.com/v1/search?query=art&per_page=80",
+        "https://api.pexels.com/v1/curated?per_page=80",
         headers: {"Authorization": APIKey});
 
     Map<String, dynamic> jsonData = jsonDecode(response.body);
